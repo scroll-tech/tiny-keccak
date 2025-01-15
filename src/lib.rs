@@ -40,6 +40,7 @@
 
 #![no_std]
 #![deny(missing_docs)]
+extern crate alloc;
 
 const RHO: [u32; 24] = [
     1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 2, 14, 27, 41, 56, 8, 25, 43, 62, 18, 39, 61, 20, 44,
@@ -164,10 +165,15 @@ mod k12;
 pub use k12::{KangarooTwelve, KangarooTwelveXof};
 
 #[cfg(feature = "keccak")]
-mod keccak;
-
-#[cfg(feature = "keccak")]
-pub use keccak::Keccak;
+cfg_if::cfg_if! {
+    if #[cfg(all(target_os = "zkvm", not(target_vendor = "succinct"), target_arch = "riscv32"))] {
+        mod openvm;
+        pub use openvm::Keccak;
+    } else {
+        mod keccak;
+        pub use keccak::Keccak;
+    }
+}
 
 #[cfg(feature = "shake")]
 mod shake;
