@@ -16,7 +16,7 @@ crunchy = "0.2.2"
 cfg-if = "1.0"
 
 [target.'cfg(all(target_os = "zkvm", not(target_vendor = "succinct"), target_arch = "riscv32"))'.dependencies]
-openvm-platform = { git = "https://github.com/openvm-org/openvm.git", tag = "v0.1.0-alpha" }
+openvm-platform = { git = "https://github.com/openvm-org/openvm.git", tag = "v0.1.1-alpha" }
 
 [profile.dev]
 opt-level = 3  # Controls the --opt-level the compiler builds with
