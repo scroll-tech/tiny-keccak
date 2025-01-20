@@ -166,7 +166,7 @@ pub use k12::{KangarooTwelve, KangarooTwelveXof};
 
 #[cfg(feature = "keccak")]
 cfg_if::cfg_if! {
-    if #[cfg(all(target_os = "zkvm", not(target_vendor = "succinct"), target_arch = "riscv32"))] {
+    if #[cfg(all(target_os = "zkvm", not(target_vendor = "succinct"), target_arch = "riscv32", feature = "openvm"))] {
         mod openvm;
         pub use openvm::Keccak;
     } else {
