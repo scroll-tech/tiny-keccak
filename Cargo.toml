@@ -15,7 +15,7 @@ categories = ["cryptography", "no-std"]
 crunchy = "0.2.2"
 cfg-if = "1.0"
 
-openvm-platform = { git = "https://github.com/openvm-org/openvm.git", rev = "2bdf9ed", optional = true }
+openvm-platform = { git = "https://github.com/openvm-org/openvm.git", rev = "de2d3a0", optional = true }
 
 [profile.dev]
 opt-level = 3  # Controls the --opt-level the compiler builds with
